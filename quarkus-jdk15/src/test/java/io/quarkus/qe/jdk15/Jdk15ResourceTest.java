@@ -10,12 +10,19 @@ import static org.hamcrest.CoreMatchers.is;
 public class Jdk15ResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testTextBlocks() {
         given()
-          .when().get("/hello")
+          .when().get("/hello/blocks")
           .then()
              .statusCode(200)
-             .body(is("hello"));
+             .body(is("""
+                             function hello() {
+                                 print('"Hello, world!"');
+                             }
+                             hello();
+                             """));
     }
+
+
 
 }

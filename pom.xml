@@ -17,8 +17,6 @@
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
 
     <maven.compiler.parameters>true</maven.compiler.parameters>
-<!--    <maven.compiler.source>11</maven.compiler.source>-->
-<!--    <maven.compiler.target>11</maven.compiler.target>-->
     <maven.compiler.release>11</maven.compiler.release>
 
     <project.build.args></project.build.args>
@@ -81,7 +79,8 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire-plugin.version}</version>
         <configuration>
-          <argLine>${project.build.args}</argLine>
+          <!-- https://bugs.openjdk.java.net/browse/JDK-8233014 Java 15 has this enabled by default -->
+          <argLine>-XX:+ShowCodeDetailsInExceptionMessages ${project.build.args}</argLine>
           <systemProperties>
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
           </systemProperties>

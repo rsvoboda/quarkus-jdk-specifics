@@ -2,6 +2,19 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>14</source>
+          <target>14</target>
+          <compilerArgs>--enable-preview</compilerArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <parent>
     <groupId>io.quarkus.qe</groupId>
@@ -13,8 +26,6 @@
 
   <properties>
     <project.build.args>--enable-preview</project.build.args>
-    <!--        <maven.compiler.source>15</maven.compiler.source>-->
-    <!--        <maven.compiler.target>15</maven.compiler.target>-->
     <maven.compiler.release>15</maven.compiler.release>
   </properties>
 
@@ -22,6 +33,10 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
     </dependency>
   </dependencies>
 

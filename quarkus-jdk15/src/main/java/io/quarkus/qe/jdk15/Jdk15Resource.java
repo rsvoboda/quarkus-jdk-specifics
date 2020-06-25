@@ -8,19 +8,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/hello")
 public class Jdk15Resource {
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        String foo = "abcx";
-        switch (foo) {
-            case "foo" -> { return "Back to work."; }
-            case "bar" -> { return "Wait for the end of week..."; }
-            case "baz" -> { return "Plan for the weekend?"; }
-            case "abc" -> { return "Enjoy the holiday!"; }
-            default -> { return "hello"; }
-        }
-    }
-
+    // JEP 378: 	Text Blocks
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/blocks")
@@ -29,7 +17,6 @@ public class Jdk15Resource {
              function hello() {
                  print('"Hello, world!"');
              }
-
              hello();
              """;
     }

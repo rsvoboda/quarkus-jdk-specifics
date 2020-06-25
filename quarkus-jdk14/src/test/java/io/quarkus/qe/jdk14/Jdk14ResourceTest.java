@@ -10,12 +10,28 @@ import static org.hamcrest.CoreMatchers.is;
 public class Jdk14ResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testSwitchExpressions() {
+        checkPath("/hello/asd", "hello asd");
+        checkPath("/hello/foo", "Back to work.");
+        checkPath("/hello/bar", "Wait for the end of week...");
+        checkPath("/hello/baz", "Plan for the weekend?");
+        checkPath("/hello/abc", "Enjoy the holiday!");
+    }
+    private void checkPath(String path, String expectedResponse) {
         given()
-          .when().get("/hello")
-          .then()
-             .statusCode(200)
-             .body(is("hello"));
+                .when().get(path)
+                .then()
+                .statusCode(200)
+                .body(is(expectedResponse));
+    }
+
+    @Test
+    public void testHelpfulNullPointerExceptions() {
+        given()
+                .when().get("/hello/npe")
+                .then()
+                .statusCode(200)
+                .body(is("Cannot invoke \"String.length()\" because \"holder.foo\" is null"));
     }
 
 }
