@@ -20,4 +20,26 @@ public class Jdk15Resource {
              hello();
              """;
     }
+
+    // JEP 384: 	Records (Second Preview)
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/record")
+    public FooRecord helloFooRecord() {
+        return new FooRecord("hello");
+    }
+
+    // JEP 375: 	Pattern Matching for instanceof (Second Preview)
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/pm")
+    public String helloPatternMatching() {
+        Object o = "my custom string";
+
+        if (!(o instanceof String s && s.length() > 3)) {
+            return "N/A";
+        }
+        return "length:" + s.length();  // s is in scope here
+    }
+
 }

@@ -23,6 +23,21 @@ public class Jdk15ResourceTest {
                              """));
     }
 
+    @Test
+    public void testRecord() {
+        given()
+                .when().get("/hello/record")
+                .then()
+                .statusCode(200)
+                .body(is("FooRecord[name=hello]"));
+    }
 
-
+    @Test
+    public void testPatternMatching() {
+        given()
+                .when().get("/hello/pm")
+                .then()
+                .statusCode(200)
+                .body(is("length:16"));
+    }
 }
