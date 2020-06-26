@@ -3,7 +3,7 @@ package io.quarkus.qe.jdk15;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-// @Entity https://github.com/quarkusio/quarkus/issues/8802
+@Entity
 public class Jdk15Entity {
     @Id
     String id;
