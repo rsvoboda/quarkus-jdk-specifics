@@ -29,6 +29,15 @@ public class Jdk15Resource {
         return new FooRecord("hello");
     }
 
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/author")
+    public String helloAuthorRecord() {
+        var author = new Author(15, "Rostislav", "Java");
+        author.followers = 5;
+        return author + ", isRecord: " + author.getClass().isRecord() + ", " + author.description() + ", " + author.followerCount();
+    }
+
     // JEP 375: 	Pattern Matching for instanceof (Second Preview)
     @GET
     @Produces(MediaType.TEXT_PLAIN)

@@ -24,12 +24,20 @@ public class Jdk15ResourceTest {
     }
 
     @Test
-    public void testRecord() {
+    public void testFooRecord() {
         given()
                 .when().get("/hello/record")
                 .then()
                 .statusCode(200)
                 .body(is("FooRecord[name=hello]"));
+    }
+    @Test
+    public void testAuthorRecord() {
+        given()
+                .when().get("/hello/author")
+                .then()
+                .statusCode(200)
+                .body(is("Author[id=15, name=Rostislav, topic=Java], isRecord: true, Author Rostislav writes on Java, 5 followers"));
     }
 
     @Test
